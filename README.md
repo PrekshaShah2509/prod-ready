@@ -15,6 +15,43 @@ No account, API key, cloud backend, telemetry, or source-code upload is required
 
 Linters, formatters, vulnerability scanners, and test runners each answer useful but narrow questions. Production readiness spans security, reliability, configuration, observability, testing, architecture, dependency hygiene, and change history. `prod-ready` brings practical repository-level signals into one local workflow; it does not guarantee security or production readiness.
 
+## Installation
+
+**Recommended — no install needed:**
+
+```bash
+npx prod-ready scan .
+```
+
+**Install globally:**
+
+```bash
+npm install -g prod-ready
+```
+
+**Install as a dev dependency:**
+
+```bash
+npm install --save-dev prod-ready
+```
+
+> **Tip:** `prod-ready` has **zero runtime dependencies**, so `npx` is the cleanest option — nothing gets added to your project's dependency tree.
+
+### Peer dependency conflicts
+
+If npm reports an `ERESOLVE` error when installing as a dev dependency, the conflict is in your project's existing peer dependencies, not in `prod-ready`. Use one of these fixes:
+
+```bash
+# Option 1 — use npx (recommended, no install needed)
+npx prod-ready scan .
+
+# Option 2 — legacy peer deps flag
+npm install --save-dev prod-ready --legacy-peer-deps
+
+# Option 3 — force (use only if Option 2 doesn't help)
+npm install --save-dev prod-ready --force
+```
+
 ## Quick start
 
 ```bash
@@ -26,8 +63,6 @@ prod-ready scan . --format html
 ```
 
 Node.js 20 or later is required. Terminal and JSON output are read-only; Markdown and HTML formats write reports to the scanned directory.
-
-`prod-ready` has no runtime dependencies. Use `npx prod-ready scan .` to run it without adding it to the scanned application's dependency tree. If you add it as a dev dependency and npm reports `ERESOLVE`, the conflict may be in the application's existing peer dependencies; resolve that conflict or use `npx` rather than forcing an install.
 
 ## Example output
 
