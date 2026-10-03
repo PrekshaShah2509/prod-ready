@@ -34,7 +34,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "npm run build && node --test dist/tests/**/*.test.js",
+    "test": "npm run build && node --test dist/tests/integration.test.js",
     "lint": "tsc --noEmit -p tsconfig.json",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

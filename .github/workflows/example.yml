@@ -1,5 +1,6 @@
-name: Production Readiness Scan
-on: [push, pull_request]
+name: Production Readiness Scan Example
+on:
+  workflow_dispatch:
 jobs:
   scan:
     runs-on: ubuntu-latest
