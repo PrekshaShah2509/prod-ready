@@ -40,7 +40,17 @@ test("detects evidence-backed risky Node findings", async () => {
 test("reports are standalone and include limitations", async () => {
   const result = await scan(fixture, defaultConfig);
   assert.match(markdownReport(result), /## Limitations/);
-  assert.match(htmlReport(result), /<!doctype html>/i);
+  const html = htmlReport(result);
+  assert.match(html, /<!doctype html>/i);
+  assert.match(html, /aria-label="Findings by severity"/);
+  assert.match(html, /@media \(max-width: 760px\)/);
+
+  result.project.name = '<img src=x onerror="alert(1)">';
+  result.findings[0].evidence = "<script>alert(1)</script>";
+  const escapedHtml = htmlReport(result);
+  assert.match(escapedHtml, /&lt;img src=x onerror=&quot;alert\(1\)&quot;&gt;/);
+  assert.match(escapedHtml, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/);
+  assert.doesNotMatch(escapedHtml, /<script>alert\(1\)<\/script>/);
 });
 /** Verify lexical traversal cannot write reports outside the scanned root. */
 test("rejects report paths outside the scanned repository", async () => {

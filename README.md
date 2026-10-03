@@ -3,6 +3,7 @@
 > Find production risks in your codebase before your users do.
 
 [![CI](https://github.com/PrekshaShah2509/prod-ready/actions/workflows/ci.yml/badge.svg)](https://github.com/PrekshaShah2509/prod-ready/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/prod-ready)](https://www.npmjs.com/package/prod-ready)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js >= 20](https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js)](https://nodejs.org/)
 
@@ -25,6 +26,8 @@ prod-ready scan . --format html
 ```
 
 Node.js 20 or later is required. Terminal and JSON output are read-only; Markdown and HTML formats write reports to the scanned directory.
+
+`prod-ready` has no runtime dependencies. Use `npx prod-ready scan .` to run it without adding it to the scanned application's dependency tree. If you add it as a dev dependency and npm reports `ERESOLVE`, the conflict may be in the application's existing peer dependencies; resolve that conflict or use `npx` rather than forcing an install.
 
 ## Example output
 
