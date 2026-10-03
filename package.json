@@ -1,6 +1,6 @@
 {
   "name": "prod-ready",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local, evidence-backed production readiness analysis for application repositories.",
   "license": "MIT",
   "repository": {

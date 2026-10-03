@@ -488,10 +488,11 @@ export function builtinRules(): Rule[] {
   rules.push(
     projectRule(
       metas.SEC004,
-      (c) => c.project.isGit,
+      (c) => Boolean(c.git),
       (c) => {
         const f = c.files.find(
           (x) =>
+            c.git?.trackedFiles.has(x.relativePath) &&
             /(^|\/)\.env(?:\.[^/]+)?$/.test(x.relativePath) &&
             !x.relativePath.endsWith(".example"),
         );

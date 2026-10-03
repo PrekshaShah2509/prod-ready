@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project follows Semantic Versioning.
 
+## [0.1.1] - 2026-10-03
+
+### Fixed
+
+- Exclude generated Next.js `.next/` output from default scans.
+- Report sensitive environment files only when they are tracked in the Git index.
+
 ## [0.1.0] - 2026-10-03
 
 ### Added

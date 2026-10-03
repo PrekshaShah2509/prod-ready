@@ -50,7 +50,7 @@ export async function scan(
       a.ruleId.localeCompare(b.ruleId),
   );
   return {
-    version: "0.1.0",
+    version: "0.1.1",
     timestamp: new Date().toISOString(),
     project,
     findings,

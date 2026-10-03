@@ -32,6 +32,12 @@ export async function analyzeGit(
     "--date=short",
     "--name-only",
   ]);
+  const trackedFiles = new Set(
+    (await git(root, ["ls-files", "-z"]))
+      .split("\0")
+      .filter(Boolean)
+      .map((path) => path.replaceAll("\\", "/")),
+  );
   const since = new Date();
   since.setDate(since.getDate() - 90);
   // Each log header updates the author and recency applied to following changed paths.
@@ -62,6 +68,7 @@ export async function analyzeGit(
   return {
     commits,
     contributors: authors.size,
+    trackedFiles,
     changesByFile,
     recentChangesByFile,
     contributorsByFile: new Map(

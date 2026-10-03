@@ -7,12 +7,14 @@ import type { Config, Severity } from "./models.js";
 
 export const defaultConfig: Config = {
   severityThreshold: "high",
+  // Avoid scanning generated Next.js output, which often contains bundled runtime code.
   exclude: [
     "node_modules/**",
     "vendor/**",
     "dist/**",
     "build/**",
     "coverage/**",
+    ".next/**",
     ".git/**",
   ],
   rules: {},
