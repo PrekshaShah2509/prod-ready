@@ -1,7 +1,7 @@
 {
   "name": "prod-ready",
-  "version": "0.1.1",
-  "description": "Local, evidence-backed production readiness analysis for application repositories.",
+  "version": "0.1.2",
+  "description": "Local-first production readiness analysis with evidence-backed findings and zero runtime dependencies.",
   "license": "MIT",
   "repository": {
     "type": "git",
