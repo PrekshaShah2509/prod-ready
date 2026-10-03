@@ -16,7 +16,6 @@ permissions:
 jobs:
   analyze:
     name: Analyze JavaScript/TypeScript
-    if: github.repository_visibility == 'public'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,3 +26,4 @@ jobs:
       - uses: github/codeql-action/analyze@v3
         with:
           category: "/language:javascript-typescript"
+          upload: never
