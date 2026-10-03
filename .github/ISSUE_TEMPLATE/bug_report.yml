@@ -1,45 +1,67 @@
 name: Bug report
 description: Report reproducible unexpected CLI behavior.
 title: "bug: "
-labels: [bug]
+labels:
+  - bug
 body:
   - type: markdown
     attributes:
-      value: "Do not paste secrets, credentials, API keys, private keys, or proprietary source code. Use a minimal sanitized reproduction."
-  - type: textarea
-    id: description
-    attributes: { label: Description, description: What happened? }
-    validations: { required: true }
+      value: >-
+        Do not include secrets, credentials, private keys, or proprietary source
+        code. Provide a minimal sanitized reproduction.
+  - type: input
+    id: cli-version
+    attributes:
+      label: prod-ready version
+      description: For example, 0.1.0.
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: For example, v20.18.0
+    validations:
+      required: true
+  - type: input
+    id: operating-system
+    attributes:
+      label: Operating system
+      placeholder: For example, Ubuntu 24.04
+    validations:
+      required: true
   - type: textarea
     id: reproduction
     attributes:
-      {
-        label: Reproduction,
-        description: Commands and minimal sanitized project structure.,
-      }
+      label: Steps to reproduce
+      description: Include commands and a minimal, sanitized project structure.
+      placeholder: |
+        1. Run ...
+        2. Observe ...
     validations: { required: true }
-  - type: input
-    id: os
-    attributes: { label: Operating system, placeholder: "e.g. Ubuntu 24.04" }
-    validations: { required: true }
-  - type: input
-    id: node
-    attributes: { label: Node.js version, placeholder: "e.g. v20.18.0" }
-    validations: { required: true }
-  - type: input
-    id: cli
-    attributes: { label: prod-ready version }
-    validations: { required: true }
+  - type: textarea
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include relevant output after removing sensitive values.
+    validations:
+      required: true
   - type: dropdown
     id: ecosystem
     attributes:
-      {
-        label: Project ecosystem,
-        options: [JavaScript, TypeScript, React, Next.js, PHP, Laravel, Other],
-      }
-  - type: textarea
-    id: expected
-    attributes: { label: Expected behavior }
-  - type: textarea
-    id: actual
-    attributes: { label: Actual behavior and sanitized output }
+      label: Project ecosystem
+      options:
+        - JavaScript
+        - TypeScript
+        - React
+        - Next.js
+        - PHP
+        - Laravel
+        - Other
+    validations:
+      required: true

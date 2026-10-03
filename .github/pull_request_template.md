@@ -1,29 +1,32 @@
-## What changed?
+## Summary
 
-## Why?
+<!-- Describe what changed and why. -->
 
-## Type of change
+## Related issue
+
+<!-- Link an issue, or write "None". -->
+
+Closes #
+
+## Change type
 
 - [ ] Bug fix
-- [ ] New rule
-- [ ] Rule improvement
+- [ ] Feature or rule
 - [ ] Documentation
-- [ ] CLI improvement
+- [ ] CLI or reporting change
 - [ ] Refactor
-- [ ] Test
+- [ ] Build or CI
 
-## Testing
+## Validation
 
-- [ ] Unit tests
-- [ ] Integration tests
-- [ ] Fixture tests
-- [ ] Manual CLI test
+- [ ] `npm test`
+- [ ] `npm run lint`
+- [ ] `npm run format:check`
+- [ ] Manual CLI check, if applicable
 
 ## Checklist
 
-- [ ] Tests pass
-- [ ] Build passes
-- [ ] Lint passes
-- [ ] Documentation updated
-- [ ] No secrets added
-- [ ] No unnecessary dependencies added
+- [ ] Change is focused and ready for review
+- [ ] Tests and documentation were updated where needed
+- [ ] No secrets, generated reports, or unrelated changes are included
+- [ ] Breaking changes and limitations are documented

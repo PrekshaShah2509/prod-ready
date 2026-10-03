@@ -1,22 +1,35 @@
 name: Feature request
 description: Suggest an improvement with a concrete use case.
 title: "feature: "
-labels: [enhancement]
+labels:
+  - enhancement
 body:
   - type: textarea
     id: problem
-    attributes: { label: Problem, description: What problem would this solve? }
-    validations: { required: true }
+    attributes:
+      label: Problem
+      description: What user problem or unmet need would this solve?
+    validations:
+      required: true
   - type: textarea
-    id: solution
-    attributes: { label: Proposed solution }
-    validations: { required: true }
+    id: use-case
+    attributes:
+      label: Use case
+      description: Describe the workflow and who benefits.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-outcome
+    attributes:
+      label: Expected outcome
+      description: What should the CLI do differently?
+    validations:
+      required: true
   - type: textarea
     id: alternatives
-    attributes: { label: Alternatives considered }
-  - type: textarea
-    id: usecase
-    attributes: { label: Use case }
+    attributes:
+      label: Alternatives considered
   - type: input
     id: ecosystem
-    attributes: { label: Affected ecosystem }
+    attributes:
+      label: Affected ecosystem

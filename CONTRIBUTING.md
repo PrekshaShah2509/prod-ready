@@ -16,6 +16,26 @@ Create short-lived branches from the latest `main` branch. Use a descriptive pre
 
 Open pull requests against `main`; do not push directly to it. Keep each pull request focused and wait for the required CI checks. Maintainers normally squash-merge approved pull requests and delete the source branch after merging.
 
+## Commit messages
+
+Use the Conventional Commits format:
+
+```text
+<type>(<optional scope>): <imperative summary>
+```
+
+Common types are `feat`, `fix`, `docs`, `test`, `refactor`, `perf`, `build`, `ci`, `chore`, and `revert`. Keep the subject concise, use the imperative mood, and omit the trailing period.
+
+Examples:
+
+```text
+feat(rules): detect unhandled async operations
+fix(reporting): reject symlink escapes
+docs: explain baseline behavior
+```
+
+Mark breaking changes with `!` after the type or scope, and describe the impact in the commit body or a `BREAKING CHANGE:` footer.
+
 ## Adding a rule
 
 1. Add complete metadata and a deterministic implementation in `src/rules/builtins.ts`.
