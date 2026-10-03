@@ -1,0 +1,6 @@
+{
+  "name": "fixture/mixed",
+  "require": {
+    "php": "^8.2"
+  }
+}

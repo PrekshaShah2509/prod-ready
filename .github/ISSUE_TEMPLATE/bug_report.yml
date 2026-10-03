@@ -1,0 +1,67 @@
+name: Bug report
+description: Report reproducible unexpected CLI behavior.
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Do not include secrets, credentials, private keys, or proprietary source
+        code. Provide a minimal sanitized reproduction.
+  - type: input
+    id: cli-version
+    attributes:
+      label: prod-ready version
+      description: For example, 0.1.0.
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: For example, v20.18.0
+    validations:
+      required: true
+  - type: input
+    id: operating-system
+    attributes:
+      label: Operating system
+      placeholder: For example, Ubuntu 24.04
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include commands and a minimal, sanitized project structure.
+      placeholder: |
+        1. Run ...
+        2. Observe ...
+    validations: { required: true }
+  - type: textarea
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include relevant output after removing sensitive values.
+    validations:
+      required: true
+  - type: dropdown
+    id: ecosystem
+    attributes:
+      label: Project ecosystem
+      options:
+        - JavaScript
+        - TypeScript
+        - React
+        - Next.js
+        - PHP
+        - Laravel
+        - Other
+    validations:
+      required: true

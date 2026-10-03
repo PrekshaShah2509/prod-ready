@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+coverage/
+*.tgz
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+.idea/
+.vscode/
+*.tmp
+production-readiness.md
+production-readiness.html

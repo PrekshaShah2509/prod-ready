@@ -1,0 +1,59 @@
+{
+  "name": "prod-ready",
+  "version": "0.1.0",
+  "description": "Local, evidence-backed production readiness analysis for application repositories.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrekshaShah2509/prod-ready.git"
+  },
+  "homepage": "https://github.com/PrekshaShah2509/prod-ready#readme",
+  "bugs": {
+    "url": "https://github.com/PrekshaShah2509/prod-ready/issues"
+  },
+  "author": "Preksha Shah <prekshashah.consult@gmail.com> (https://preksha-shah.vercel.app/)",
+  "type": "module",
+  "bin": {
+    "prod-ready": "dist/cli.js"
+  },
+  "files": [
+    "dist/cli.js",
+    "dist/cli.d.ts",
+    "dist/cli.js.map",
+    "dist/core",
+    "dist/dependencies",
+    "dist/detector",
+    "dist/git",
+    "dist/reporting",
+    "dist/rules",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test dist/tests/integration.test.js",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "prettier": "^3.9.9",
+    "typescript": "^5.7.2"
+  },
+  "keywords": [
+    "cli",
+    "static-analysis",
+    "security",
+    "production-readiness",
+    "typescript",
+    "nodejs",
+    "code-quality",
+    "developer-tools",
+    "devops"
+  ]
+}
