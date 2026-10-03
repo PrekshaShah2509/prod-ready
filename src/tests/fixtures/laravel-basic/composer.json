@@ -1,0 +1,6 @@
+{
+  "name": "fixture/laravel",
+  "require": {
+    "laravel/framework": "^11.0"
+  }
+}
