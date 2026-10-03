@@ -15,7 +15,7 @@ import {
   terminalReport,
 } from "./reporting/reports.js";
 
-const version = "0.1.0";
+const version = "0.1.1";
 const help = `Production Readiness CLI v${version}
 
 Usage:

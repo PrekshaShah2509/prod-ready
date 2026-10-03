@@ -24,7 +24,7 @@ It creates `prod-ready.config.json` and `.prod-readyignore` only when they are a
 }
 ```
 
-`severityThreshold` controls the exit-code gate. Valid values are `critical`, `high`, `medium`, `low`, and `info`. `exclude` is combined with built-in exclusions and ignore-file patterns. `rules` accepts `off`, `info`, `warning`, `error`, or an explicit severity; `error` maps to high and `warning` maps to medium. `output` controls the paths written only by `--format markdown` and `--format html`.
+`severityThreshold` controls the exit-code gate. Valid values are `critical`, `high`, `medium`, `low`, and `info`. `exclude` is combined with built-in exclusions and ignore-file patterns. Built-in exclusions include generated Next.js `.next/` output. `rules` accepts `off`, `info`, `warning`, `error`, or an explicit severity; `error` maps to high and `warning` maps to medium. `output` controls the paths written only by `--format markdown` and `--format html`.
 
 Use a different file with `--config path/to/config.json`; malformed configuration exits with code 2. `.prod-readyignore` accepts basic folder and wildcard patterns, for example `generated/` and `coverage/**`.
 

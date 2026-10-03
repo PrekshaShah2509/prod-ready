@@ -69,6 +69,67 @@ test("rejects report paths that escape through a symlink", async () => {
     await rm(parent, { recursive: true, force: true });
   }
 });
+/** Verify generated Next.js bundles are excluded from default source analysis. */
+test("ignores generated Next.js build output by default", async () => {
+  const root = await mkdtemp(resolve(tmpdir(), "prod-ready-next-"));
+  try {
+    await mkdir(resolve(root, ".next/server"), { recursive: true });
+    await writeFile(
+      resolve(root, "package.json"),
+      JSON.stringify({
+        name: "next-fixture",
+        dependencies: { next: "15.0.0" },
+      }),
+    );
+    await writeFile(resolve(root, "app.js"), "export const ready = true;\n");
+    await writeFile(resolve(root, ".next/server/page.js"), 'eval("bundle");\n');
+
+    const result = await scan(root, defaultConfig);
+    assert.equal(result.filesAnalyzed, 2);
+    assert.ok(
+      result.findings.every((finding) => !finding.file?.startsWith(".next/")),
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+/** Verify SEC004 distinguishes tracked environment files from ignored local files. */
+test("reports only tracked sensitive environment files", async () => {
+  const root = await mkdtemp(resolve(tmpdir(), "prod-ready-env-"));
+  try {
+    await writeFile(resolve(root, "package.json"), '{"name":"env-fixture"}\n');
+    await writeFile(resolve(root, ".gitignore"), ".env.local\n");
+    await writeFile(
+      resolve(root, ".env.local"),
+      "PAYMENT_TOKEN=fixture-value\n",
+    );
+    await exec("git", ["init", "-q", root]);
+    await exec("git", [
+      "-C",
+      root,
+      "config",
+      "user.email",
+      "test@example.invalid",
+    ]);
+    await exec("git", ["-C", root, "config", "user.name", "Test"]);
+    await exec("git", ["-C", root, "add", "package.json", ".gitignore"]);
+    await exec("git", ["-C", root, "commit", "-qm", "fixture"]);
+
+    const untrackedResult = await scan(root, defaultConfig);
+    assert.equal(
+      untrackedResult.findings.some((finding) => finding.ruleId === "SEC004"),
+      false,
+    );
+
+    await exec("git", ["-C", root, "add", "-f", ".env.local"]);
+    const trackedResult = await scan(root, defaultConfig);
+    assert.ok(
+      trackedResult.findings.some((finding) => finding.ruleId === "SEC004"),
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
 /** Verify Laravel detection and required rule metadata. */
 test("detects Laravel and keeps rule metadata complete", async () => {
   const project = await detectProject(

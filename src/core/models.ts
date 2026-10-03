@@ -53,6 +53,7 @@ export interface ProjectInfo {
 export interface GitInsight {
   commits: number;
   contributors: number;
+  trackedFiles: Set<string>;
   changesByFile: Map<string, number>;
   recentChangesByFile: Map<string, number>;
   contributorsByFile: Map<string, number>;
