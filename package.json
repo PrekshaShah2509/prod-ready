@@ -1,6 +1,6 @@
 {
   "name": "prod-ready",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Local-first production readiness analysis with evidence-backed findings and zero runtime dependencies.",
   "license": "MIT",
   "repository": {
